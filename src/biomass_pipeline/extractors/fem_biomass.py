@@ -58,4 +58,6 @@ def extraer(ruta_pdf: str, mes: date) -> BiomassPricesFEM:
         ),
         swiss_preis_eur_t=_valor_fila(texto, "Heating wood pellets - Switzerland", "€/tonne", idx),
         baltpool_eur_t=_valor_fila(texto, "Heating wood pellets - Lithuania", "€/tonne", idx),
+        finland_eur_mwh=_valor_fila(texto, "Forest biomass - Finland", "€/MWh", idx),
+        endex_ancla_eur_t=_valor_fila(texto, "Industrial wood pellets", "€/tonne", idx),
     )

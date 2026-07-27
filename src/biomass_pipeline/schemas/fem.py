@@ -17,6 +17,8 @@ class BiomassPricesFEM(BaseModel):
     austria_propellet_eur_t: float | None  # col AL
     swiss_preis_eur_t: float | None  # col AF
     baltpool_eur_t: float | None  # col AO (a veces '-')
+    finland_eur_mwh: float | None    # col H
+    endex_ancla_eur_t: float | None    # col W (fila CIF ARA)
 
     @field_validator("germany_depi_eur_t", "austria_propellet_eur_t", "swiss_preis_eur_t")
     @classmethod
