@@ -1,17 +1,21 @@
-"""Registro de extractores dirigido por configuracion.
+"""Registro de extractores dirigido por configuracion."""
 
-Cada tabla se declara en configs/*.yaml (la 'ficha de extraccion') y se asocia
-aqui a su funcion de extraccion. Anadir una tabla nueva = anadir un yaml + una
-funcion + una linea en este mapa. El motor del pipeline no cambia.
-"""
-from . import argus_spot, fem_biomass
+from . import (
+    argus_asian,
+    argus_freight,
+    argus_italy,
+    argus_pks,
+    argus_spot,
+    fem_biomass,
+)
 
-# id de tabla -> funcion extractora
 EXTRACTORES = {
     "argus_spot": argus_spot.extraer,
+    "argus_asian": argus_asian.extraer,
+    "argus_pks": argus_pks.extraer,
+    "argus_italy": argus_italy.extraer,
+    "argus_freight": argus_freight.extraer,
     "fem_biomass_prices": fem_biomass.extraer,
-    # "argus_asian": argus_asian.extraer,     # <- proxima tabla
-    # "argus_freight": argus_freight.extraer,
 }
 
 
