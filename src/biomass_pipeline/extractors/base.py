@@ -8,6 +8,7 @@ El patron de cada extractor es siempre el mismo:
 Cuando una tabla NO se pueda parsear con regex, se usara extraer_con_llm()
 (ver extractors/llm.py). Las tablas limpias no lo necesitan.
 """
+
 import re
 
 import pdfplumber

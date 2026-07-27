@@ -1,4 +1,5 @@
 """Conversiones de unidad. Centralizadas para que la logica viva en un solo sitio."""
+
 from .config import GJ_POR_MWH, GJ_POR_TONELADA, MWH_POR_TONELADA
 
 

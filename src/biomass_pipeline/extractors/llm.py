@@ -5,6 +5,7 @@ Devuelve JSON validado contra un esquema Pydantic: nunca texto libre.
 Requiere el extra 'llm' (pip install -e '.[llm]') y la credencial ANTHROPIC_API_KEY
 inyectada desde el gestor de secretos.
 """
+
 from __future__ import annotations
 
 import json

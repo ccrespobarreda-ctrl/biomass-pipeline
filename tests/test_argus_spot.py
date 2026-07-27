@@ -5,6 +5,7 @@
 - test_integracion: corre contra PDFs reales locales; se SALTA si no estan
   (los PDFs del Argus estan licenciados y NO se commitean).
 """
+
 import os
 from datetime import date
 

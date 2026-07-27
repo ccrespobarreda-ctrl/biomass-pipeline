@@ -4,6 +4,7 @@ Cada tabla se declara en configs/*.yaml (la 'ficha de extraccion') y se asocia
 aqui a su funcion de extraccion. Anadir una tabla nueva = anadir un yaml + una
 funcion + una linea en este mapa. El motor del pipeline no cambia.
 """
+
 from . import argus_spot
 
 # id de tabla -> funcion extractora

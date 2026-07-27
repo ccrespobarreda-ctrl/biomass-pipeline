@@ -3,6 +3,7 @@
 Es la PLANTILLA para el resto de tablas: copia este patron, cambia el esquema
 y los patrones regex, y tienes un extractor nuevo.
 """
+
 from datetime import date
 
 from ..schemas.argus import SpotPellets

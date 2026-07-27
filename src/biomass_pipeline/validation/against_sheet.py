@@ -4,6 +4,7 @@ Como el Excel ya trae el dato correcto, esto detecta al instante si un extractor
 acierta o si un proveedor cambio el formato. Se usa en desarrollo y como red de
 seguridad; en produccion, la deteccion la hacen las puertas de calidad + alertas.
 """
+
 import datetime
 
 import openpyxl
