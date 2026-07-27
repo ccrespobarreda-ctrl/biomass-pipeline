@@ -1,0 +1,17 @@
+# Ficha de extraccion — bloque SPOT del Argus Biomass Markets.
+# Anadir una tabla nueva = crear un yaml como este + su extractor + registrarlo.
+id: argus_spot
+publicacion: ABM          # Argus Biomass Markets
+cadencia: semanal         # miercoles
+tabla: "Wood pellets - within 90 days (spot)"
+metodo: pdfplumber        # tabla limpia; no necesita LLM
+columnas_destino:         # columnas del sheet que rellena
+  - M   # cif_nwe_usd_t
+  - P   # fob_baltics_eur_t
+  - R   # fob_portugal_eur_t
+  - L   # chips_cif_nwe_eur_gj
+calculadas_a_partir:      # columnas que se derivan de las de arriba (las hace dbt)
+  N: "M * FX"
+  O: "N / 17"
+  Q: "P / 17"
+  S: "R / 17"

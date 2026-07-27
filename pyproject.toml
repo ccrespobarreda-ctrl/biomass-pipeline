@@ -1,0 +1,39 @@
+[project]
+name = "biomass-pipeline"
+version = "0.1.0"
+description = "Pipeline de extraccion de datos de mercado (Argus Biomass Markets + Forest Energy Monitor) a PostgreSQL/Zoho."
+requires-python = ">=3.12"
+dependencies = [
+    "pdfplumber>=0.11",
+    "pydantic>=2.7",
+    "openpyxl>=3.1",     # lectura del sheet historico para validacion
+    "pyyaml>=6.0",       # fichas de extraccion declarativas
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "pre-commit>=3.7",
+]
+# LLM: solo cuando una tabla se resista a pdfplumber
+llm = ["anthropic>=0.34"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/biomass_pipeline"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]  # errores, pyflakes, imports ordenados, upgrades, bugbear
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = ["integration: requiere PDFs reales locales (se salta si no estan)"]

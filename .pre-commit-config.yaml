@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff        # linting
+        args: [--fix]
+      - id: ruff-format # formato
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest (tests rapidos)
+        entry: pytest -q -m "not integration"
+        language: system
+        pass_filenames: false

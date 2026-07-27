@@ -1,0 +1,19 @@
+# datos licenciados y de entrada (NUNCA al repo)
+data/
+*.pdf
+*.xlsx
+
+# secretos
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
