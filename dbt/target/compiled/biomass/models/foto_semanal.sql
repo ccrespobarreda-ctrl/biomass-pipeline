@@ -69,6 +69,6 @@ select
     f.pine_residuals_usd
 
 from argus_semanal a
-left join {{ ref('fem_mensual_final') }} f
+left join "postgres"."analytics"."fem_mensual_final" f
     on date_trunc('month', a.fecha_issue) = f.mes
 order by a.fecha_issue
