@@ -9,33 +9,29 @@
   
   (
     -- Foto semanal: Argus (semanal) + FEM (mensual arrastrado) + columnas calculadas.
--- Esta tanda: calculos SIN tipo de cambio (€/t -> €/GJ -> €/MWh, y €/MWh -> €/GJ).
--- Los calculos con $->€ (asiaticos y CIF en euros, ENDEX en $) van en la siguiente
--- tanda, cuando extraigamos el tipo de cambio del FEM.
+-- Calculos SIN tipo de cambio, redondeados a 2 decimales.
 
 select
     a.fecha_issue,
 
-    -- ===== ARGUS directo =====
+    -- ===== ARGUS =====
     a.chips_cif_nwe_eur_gj,
     a.cif_nwe_usd_t,
     a.fob_baltics_eur_t,
-    a.fob_baltics_eur_t / 17            as fob_baltics_eur_gj,
+    round(a.fob_baltics_eur_t / 17, 2)            as fob_baltics_eur_gj,
     a.fob_portugal_eur_t,
-    a.fob_portugal_eur_t / 17           as fob_portugal_eur_gj,
+    round(a.fob_portugal_eur_t / 17, 2)           as fob_portugal_eur_gj,
     a.viet_japan_fit_usd_t,
     a.viet_korea_usd_t,
     a.gwangyang_usd_t,
     a.sumatra_fit_usd_t,
     a.malaysia_fit_usd_t,
-    -- Italia premium (Mid): €/t directo, €/GJ y €/MWh calculados
     a.bulk_mid_eur_t,
-    a.bulk_mid_eur_t / 17               as bulk_mid_eur_gj,
-    a.bulk_mid_eur_t / 17 * 3.6         as bulk_mid_eur_mwh,
+    round(a.bulk_mid_eur_t / 17, 2)               as bulk_mid_eur_gj,
+    round(a.bulk_mid_eur_t / 17 * 3.6, 2)         as bulk_mid_eur_mwh,
     a.bagged_mid_eur_t,
-    a.bagged_mid_eur_t / 17             as bagged_mid_eur_gj,
-    a.bagged_mid_eur_t / 17 * 3.6       as bagged_mid_eur_mwh,
-    -- fletes (directos)
+    round(a.bagged_mid_eur_t / 17, 2)             as bagged_mid_eur_gj,
+    round(a.bagged_mid_eur_t / 17 * 3.6, 2)       as bagged_mid_eur_mwh,
     a.aveiro_ara_eur_t,
     a.aveiro_cph_eur_t,
     a.aveiro_hull_eur_t,
@@ -48,32 +44,28 @@ select
     a.savannah_ara_45kt_usd_t,
     a.vancouver_ara_45kt_usd_t,
 
-    -- ===== FEM directo + calculado =====
-    -- residenciales: €/t directo, €/GJ y €/MWh calculados
+    -- ===== FEM =====
     f.germany_depi_eur_t,
-    f.germany_depi_eur_t / 17           as germany_depi_eur_gj,
-    f.germany_depi_eur_t / 17 * 3.6     as germany_depi_eur_mwh,
+    round(f.germany_depi_eur_t / 17, 2)           as germany_depi_eur_gj,
+    round(f.germany_depi_eur_t / 17 * 3.6, 2)     as germany_depi_eur_mwh,
     f.austria_propellet_eur_t,
-    f.austria_propellet_eur_t / 17      as austria_propellet_eur_gj,
-    f.austria_propellet_eur_t / 17 * 3.6 as austria_propellet_eur_mwh,
+    round(f.austria_propellet_eur_t / 17, 2)      as austria_propellet_eur_gj,
+    round(f.austria_propellet_eur_t / 17 * 3.6, 2) as austria_propellet_eur_mwh,
     f.swiss_preis_eur_t,
-    f.swiss_preis_eur_t / 17            as swiss_preis_eur_gj,
-    f.swiss_preis_eur_t / 17 * 3.6      as swiss_preis_eur_mwh,
+    round(f.swiss_preis_eur_t / 17, 2)            as swiss_preis_eur_gj,
+    round(f.swiss_preis_eur_t / 17 * 3.6, 2)      as swiss_preis_eur_mwh,
     f.baltpool_eur_t,
-    f.baltpool_eur_t / 17               as baltpool_eur_gj,
-    f.baltpool_eur_t / 17 * 3.6         as baltpool_eur_mwh,
-    -- ENDEX: por ahora solo la parte en euros (el €/t se extrae; $ va con FX despues)
+    round(f.baltpool_eur_t / 17, 2)               as baltpool_eur_gj,
+    round(f.baltpool_eur_t / 17 * 3.6, 2)         as baltpool_eur_mwh,
     f.endex_ancla_eur_t,
-    f.endex_ancla_eur_t / 17            as endex_ancla_eur_gj,
-    f.endex_ancla_eur_t / 17 * 3.6      as endex_ancla_eur_mwh,
-    -- series en €/MWh: €/GJ calculado dividiendo entre 3.6
+    round(f.endex_ancla_eur_t / 17, 2)            as endex_ancla_eur_gj,
+    round(f.endex_ancla_eur_t / 17 * 3.6, 2)      as endex_ancla_eur_mwh,
     f.finland_eur_mwh,
-    f.finland_eur_mwh / 3.6             as finland_eur_gj,
+    round(f.finland_eur_mwh / 3.6, 2)             as finland_eur_gj,
     f.sweden_eur_mwh,
-    f.sweden_eur_mwh / 3.6              as sweden_eur_gj,
+    round(f.sweden_eur_mwh / 3.6, 2)              as sweden_eur_gj,
     f.lithuania_chips_eur_mwh,
-    f.lithuania_chips_eur_mwh / 3.6     as lithuania_chips_eur_gj,
-    -- pino US South (directos, en US$/s.ton)
+    round(f.lithuania_chips_eur_mwh / 3.6, 2)     as lithuania_chips_eur_gj,
     f.pine_pulpwood_usd,
     f.pine_chips_usd,
     f.pine_residuals_usd
