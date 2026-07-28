@@ -1,8 +1,4 @@
-"""Contratos de salida (Pydantic) para las tablas del Forest Energy Monitor (FEM).
-
-El FEM es MENSUAL: su valor se arrastra en el sheet a las semanas del mes hasta
-el issue siguiente.
-"""
+"""Contratos de salida (Pydantic) para las tablas del Forest Energy Monitor (FEM)."""
 
 from datetime import date
 
@@ -10,20 +6,31 @@ from pydantic import BaseModel, field_validator
 
 
 class BiomassPricesFEM(BaseModel):
-    """Fila mensual de la tabla 'Biomass prices' (residenciales). Cols AF, AI, AL, AO."""
+    """Fila de la tabla 'Biomass prices' para UN mes concreto de UN issue.
+
+    Cada issue del FEM reporta varios meses; se emite una fila por mes (Opcion A:
+    se guarda el rastro por issue, y meses vacios se rellenan desde issues posteriores).
+    """
 
     mes: date
-    germany_depi_eur_t: float | None  # col AI
-    austria_propellet_eur_t: float | None  # col AL
-    swiss_preis_eur_t: float | None  # col AF
-    baltpool_eur_t: float | None  # col AO (a veces '-')
-    finland_eur_mwh: float | None    # col H
-    endex_ancla_eur_t: float | None    # col W (fila CIF ARA)
+    issue_origen: str | None = None
+    # residenciales (mensuales, fiables)
+    germany_depi_eur_t: float | None = None       # col AI
+    austria_propellet_eur_t: float | None = None  # col AL
+    swiss_preis_eur_t: float | None = None        # col AF
+    baltpool_eur_t: float | None = None           # col AO
+    endex_ancla_eur_t: float | None = None        # col W (fila CIF ARA)
+    # series trimestrales / best-effort
+    finland_eur_mwh: float | None = None          # col H
+    sweden_eur_mwh: float | None = None           # col F
+    pine_pulpwood_usd: float | None = None        # col C
+    pine_chips_usd: float | None = None           # col D
+    pine_residuals_usd: float | None = None       # col E
+    lithuania_chips_eur_mwh: float | None = None  # col J
 
     @field_validator("germany_depi_eur_t", "austria_propellet_eur_t", "swiss_preis_eur_t")
     @classmethod
     def rango_residencial(cls, v):
-        # los residenciales rondan 150-600 €/t; fuera de ahi es sospechoso
         if v is not None and not (150 <= v <= 600):
             raise ValueError(f"precio residencial fuera de rango plausible: {v}")
         return v
