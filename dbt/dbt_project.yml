@@ -1,0 +1,9 @@
+name: biomass
+version: 1.0.0
+profile: biomass
+
+model-paths: ["models"]
+
+models:
+  biomass:
+    +materialized: table

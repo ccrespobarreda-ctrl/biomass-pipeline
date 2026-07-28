@@ -1,0 +1,528 @@
+[0m16:22:53.326178 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E15DA64980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E15B08F610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E16141B890>]}
+
+
+============================== 16:22:53.405331 | afa891b7-bcb7-47e0-8d61-d8df093f8bd6 ==============================
+[0m16:22:53.405331 [info ] [MainThread]: Running with dbt=1.12.0
+[0m16:22:53.406713 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'invocation_command': 'dbt debug', 'log_path': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt\\logs'}
+[0m16:22:53.498661 [info ] [MainThread]: dbt version: 1.12.0
+[0m16:22:53.499256 [info ] [MainThread]: python version: 3.14.6
+[0m16:22:53.499755 [info ] [MainThread]: python path: C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\.venv\Scripts\python.exe
+[0m16:22:53.500244 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m16:22:53.615149 [info ] [MainThread]: Using profiles dir at C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt
+[0m16:22:53.615813 [info ] [MainThread]: Using profiles.yml file at C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\profiles.yml
+[0m16:22:53.616179 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\dbt_project.yml
+[0m16:22:53.618635 [info ] [MainThread]: adapter type: postgres
+[0m16:22:53.619160 [info ] [MainThread]: adapter version: 1.11.0
+[0m16:22:53.727571 [info ] [MainThread]: Configuration:
+[0m16:22:53.728214 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m16:22:53.728745 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m16:22:53.729025 [info ] [MainThread]: Required dependencies:
+[0m16:22:53.729297 [debug] [MainThread]: Executing "git --help"
+[0m16:22:53.768106 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m16:22:53.768790 [debug] [MainThread]: STDERR: "b''"
+[0m16:22:53.769169 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m16:22:53.769717 [info ] [MainThread]: Connection:
+[0m16:22:53.770422 [info ] [MainThread]:   host: aws-0-eu-central-1.pooler.supabase.com
+[0m16:22:53.770979 [info ] [MainThread]:   port: 5432
+[0m16:22:53.771521 [info ] [MainThread]:   user: postgres.rfkmsxgjqyaqjpyvynnk
+[0m16:22:53.772023 [info ] [MainThread]:   database: postgres
+[0m16:22:53.772515 [info ] [MainThread]:   schema: analytics
+[0m16:22:53.772804 [info ] [MainThread]:   connect_timeout: 10
+[0m16:22:53.773063 [info ] [MainThread]:   role: None
+[0m16:22:53.773632 [info ] [MainThread]:   search_path: None
+[0m16:22:53.774219 [info ] [MainThread]:   keepalives_idle: 0
+[0m16:22:53.774523 [info ] [MainThread]:   sslmode: None
+[0m16:22:53.774974 [info ] [MainThread]:   sslcert: None
+[0m16:22:53.775432 [info ] [MainThread]:   sslkey: None
+[0m16:22:53.775689 [info ] [MainThread]:   sslrootcert: None
+[0m16:22:53.776154 [info ] [MainThread]:   application_name: dbt
+[0m16:22:53.776623 [info ] [MainThread]:   autocommit: False
+[0m16:22:53.777385 [info ] [MainThread]:   retries: 1
+[0m16:22:53.778675 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m16:22:54.011460 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m16:22:54.089644 [debug] [MainThread]: Using postgres connection "debug"
+[0m16:22:54.089971 [debug] [MainThread]: On debug: select 1 as id
+[0m16:22:54.090184 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:22:55.484264 [debug] [MainThread]: SQL status: SELECT 1 in 1.394 seconds
+[0m16:22:55.486303 [debug] [MainThread]: On debug: Close
+[0m16:22:55.488358 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m16:22:55.489668 [info ] [MainThread]: [32mAll checks passed![0m
+[0m16:22:55.492225 [debug] [MainThread]: Command `dbt debug` succeeded at 16:22:55.491826 after 2.37 seconds
+[0m16:22:55.493165 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m16:22:55.494045 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E1615042B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E1611716D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E15F59A030>]}
+[0m16:22:55.495128 [debug] [MainThread]: Flushing usage events
+[0m16:22:55.623450 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:25:38.004472 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D373C830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D0FA11D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D5FEF9D0>]}
+
+
+============================== 16:25:38.009667 | f9aef0c2-76e4-411c-a67d-9e05776a0ae3 ==============================
+[0m16:25:38.009667 [info ] [MainThread]: Running with dbt=1.12.0
+[0m16:25:38.010306 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt\\logs'}
+[0m16:25:38.211988 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D5F76780>]}
+[0m16:25:38.271732 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D0F2FF00>]}
+[0m16:25:38.273331 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m16:25:38.422975 [debug] [MainThread]: checksum: d7cdc59de4fe4bbe673df08e66b19d53ac954f798c807b5aecad886b44de16c1, vars: {}, profile: biomass, target: dev, version: 1.12.0
+[0m16:25:38.423656 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m16:25:38.424168 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D658C150>]}
+[0m16:25:39.232224 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D60E06E0>]}
+[0m16:25:39.304058 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\manifest.json
+[0m16:25:39.308825 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\semantic_manifest.json
+[0m16:25:39.409820 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\osi_document.json
+[0m16:25:39.456229 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D691A6D0>]}
+[0m16:25:39.456599 [info ] [MainThread]: Found 1 model, 477 macros
+[0m16:25:39.456996 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D66035F0>]}
+[0m16:25:39.458213 [info ] [MainThread]: 
+[0m16:25:39.458560 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:25:39.458826 [info ] [MainThread]: 
+[0m16:25:39.459219 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:25:39.460063 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres'
+[0m16:25:39.530269 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m16:25:39.530574 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m16:25:39.530779 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:25:40.979757 [debug] [ThreadPool]: SQL status: SELECT 48 in 1.449 seconds
+[0m16:25:40.982111 [debug] [ThreadPool]: On list_postgres: Close
+[0m16:25:40.984159 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_postgres, now create_postgres_analytics)
+[0m16:25:40.985126 [debug] [ThreadPool]: Creating schema "database: "postgres"
+schema: "analytics"
+"
+[0m16:25:40.990361 [debug] [ThreadPool]: Using postgres connection "create_postgres_analytics"
+[0m16:25:40.990846 [debug] [ThreadPool]: On create_postgres_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "create_postgres_analytics"} */
+create schema if not exists "analytics"
+[0m16:25:40.991195 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:25:42.508388 [debug] [ThreadPool]: SQL status: CREATE SCHEMA in 1.517 seconds
+[0m16:25:42.510464 [debug] [ThreadPool]: On create_postgres_analytics: COMMIT
+[0m16:25:42.511242 [debug] [ThreadPool]: Using postgres connection "create_postgres_analytics"
+[0m16:25:42.511774 [debug] [ThreadPool]: On create_postgres_analytics: COMMIT
+[0m16:25:42.713137 [debug] [ThreadPool]: SQL status: COMMIT in 0.201 seconds
+[0m16:25:42.714089 [debug] [ThreadPool]: On create_postgres_analytics: Close
+[0m16:25:42.718538 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres_analytics'
+[0m16:25:42.725163 [debug] [ThreadPool]: Using postgres connection "list_postgres_analytics"
+[0m16:25:42.725507 [debug] [ThreadPool]: On list_postgres_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "list_postgres_analytics"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'analytics'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'analytics'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'analytics'
+    union all
+    select distinct
+     'postgres' as database,
+     proname as name,
+     ns.nspname as schema,
+     'function' as type
+    from pg_proc
+     join pg_namespace as ns on pronamespace = ns.oid
+    where ns.nspname ilike 'analytics'
+  
+[0m16:25:42.725753 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:25:44.452991 [debug] [ThreadPool]: SQL status: SELECT 0 in 1.727 seconds
+[0m16:25:44.454493 [debug] [ThreadPool]: On list_postgres_analytics: ROLLBACK
+[0m16:25:44.604667 [debug] [ThreadPool]: On list_postgres_analytics: Close
+[0m16:25:44.612162 [debug] [MainThread]: Using postgres connection "master"
+[0m16:25:44.612906 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:25:44.613485 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:25:45.989074 [debug] [MainThread]: SQL status: SELECT 1 in 1.375 seconds
+[0m16:25:45.991763 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D6B50E90>]}
+[0m16:25:45.992715 [debug] [MainThread]: On master: ROLLBACK
+[0m16:25:46.089153 [debug] [MainThread]: On master: COMMIT
+[0m16:25:46.090033 [debug] [MainThread]: Using postgres connection "master"
+[0m16:25:46.090773 [debug] [MainThread]: On master: COMMIT
+[0m16:25:46.306254 [debug] [MainThread]: SQL status: COMMIT in 0.215 seconds
+[0m16:25:46.307474 [debug] [MainThread]: On master: Close
+[0m16:25:46.329218 [debug] [Thread-1 (]: Began running node model.biomass.fem_mensual_final
+[0m16:25:46.329897 [info ] [Thread-1 (]: 1 of 1 START sql table model analytics.fem_mensual_final ....................... [RUN]
+[0m16:25:46.330595 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.biomass.fem_mensual_final'
+[0m16:25:46.331029 [debug] [Thread-1 (]: Began compiling node model.biomass.fem_mensual_final
+[0m16:25:46.335342 [debug] [Thread-1 (]: Writing injected SQL for node "model.biomass.fem_mensual_final"
+[0m16:25:46.336569 [debug] [Thread-1 (]: Began executing node model.biomass.fem_mensual_final
+[0m16:25:46.367391 [debug] [Thread-1 (]: Writing runtime sql for node "model.biomass.fem_mensual_final"
+[0m16:25:46.369919 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:25:46.370345 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+
+  
+    
+
+  create  table "postgres"."analytics"."fem_mensual_final__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Valor bueno de cada mes del FEM: la version del issue mas reciente.
+-- Asi los meses que se rellenaron en issues posteriores se quedan con su valor final.
+select distinct on (mes)
+    mes,
+    germany_depi_eur_t,
+    austria_propellet_eur_t,
+    swiss_preis_eur_t,
+    baltpool_eur_t,
+    endex_ancla_eur_t,
+    finland_eur_mwh,
+    sweden_eur_mwh,
+    pine_pulpwood_usd,
+    pine_chips_usd,
+    pine_residuals_usd,
+    lithuania_chips_eur_mwh
+from fem_mensual
+order by mes, issue_origen desc
+  );
+  
+[0m16:25:46.370602 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:25:47.731700 [debug] [Thread-1 (]: SQL status: SELECT 14 in 1.361 seconds
+[0m16:25:47.747959 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:25:47.748404 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+alter table "postgres"."analytics"."fem_mensual_final__dbt_tmp" rename to "fem_mensual_final"
+[0m16:25:47.891616 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.143 seconds
+[0m16:25:47.903034 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: COMMIT
+[0m16:25:47.903334 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:25:47.903547 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: COMMIT
+[0m16:25:48.005604 [debug] [Thread-1 (]: SQL status: COMMIT in 0.102 seconds
+[0m16:25:48.015290 [debug] [Thread-1 (]: Applying DROP to: "postgres"."analytics"."fem_mensual_final__dbt_backup"
+[0m16:25:48.019613 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:25:48.019951 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+drop table if exists "postgres"."analytics"."fem_mensual_final__dbt_backup" cascade
+[0m16:25:48.122263 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.102 seconds
+[0m16:25:48.127173 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: Close
+[0m16:25:48.134027 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'f9aef0c2-76e4-411c-a67d-9e05776a0ae3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D3BC2E60>]}
+[0m16:25:48.135133 [info ] [Thread-1 (]: 1 of 1 OK created sql table model analytics.fem_mensual_final .................. [[32mSELECT 14[0m in 1.80s]
+[0m16:25:48.136144 [debug] [Thread-1 (]: Finished running node model.biomass.fem_mensual_final
+[0m16:25:48.137952 [debug] [MainThread]: On master: COMMIT
+[0m16:25:48.138197 [debug] [MainThread]: Using postgres connection "master"
+[0m16:25:48.138433 [debug] [MainThread]: On master: COMMIT
+[0m16:25:48.138600 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:25:48.941356 [debug] [MainThread]: SQL status: COMMIT in 0.803 seconds
+[0m16:25:48.942403 [debug] [MainThread]: On master: Close
+[0m16:25:48.943746 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:25:48.944492 [debug] [MainThread]: Connection 'create_postgres_analytics' was properly closed.
+[0m16:25:48.945016 [debug] [MainThread]: Connection 'list_postgres_analytics' was properly closed.
+[0m16:25:48.945731 [debug] [MainThread]: Connection 'model.biomass.fem_mensual_final' was properly closed.
+[0m16:25:48.946263 [info ] [MainThread]: 
+[0m16:25:48.946927 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 9.49 seconds (9.49s).
+[0m16:25:48.948143 [debug] [MainThread]: Command end result
+[0m16:25:48.972043 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\manifest.json
+[0m16:25:48.974513 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\semantic_manifest.json
+[0m16:25:48.976856 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\osi_document.json
+[0m16:25:48.987740 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\run_results.json
+[0m16:25:48.988062 [info ] [MainThread]: 
+[0m16:25:48.988410 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:25:48.988656 [info ] [MainThread]: 
+[0m16:25:48.988924 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[0m16:25:48.989612 [debug] [MainThread]: Command `dbt run` succeeded at 16:25:48.989536 after 11.22 seconds
+[0m16:25:48.989861 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D68DB4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D68B1B50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247D68C68D0>]}
+[0m16:25:48.990101 [debug] [MainThread]: Flushing usage events
+[0m16:25:49.129276 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:35:21.739561 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF8D12C830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF8A9811D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF8F9DF9D0>]}
+
+
+============================== 16:35:21.743070 | ac0c1c43-59d0-44e8-b0df-a9fc21647bdc ==============================
+[0m16:35:21.743070 [info ] [MainThread]: Running with dbt=1.12.0
+[0m16:35:21.743756 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt run', 'log_path': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt\\logs'}
+[0m16:35:21.904089 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF8F966780>]}
+[0m16:35:21.960134 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF8A90FF00>]}
+[0m16:35:21.960983 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m16:35:22.101271 [debug] [MainThread]: checksum: d7cdc59de4fe4bbe673df08e66b19d53ac954f798c807b5aecad886b44de16c1, vars: {}, profile: biomass, target: dev, version: 1.12.0
+[0m16:35:22.187383 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m16:35:22.187747 [debug] [MainThread]: Partial parsing: added file: biomass://models\foto_semanal.sql
+[0m16:35:22.422280 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF8FF1C650>]}
+[0m16:35:22.488447 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\manifest.json
+[0m16:35:22.491091 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\semantic_manifest.json
+[0m16:35:22.530702 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\osi_document.json
+[0m16:35:22.544918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF902DE030>]}
+[0m16:35:22.545282 [info ] [MainThread]: Found 2 models, 477 macros
+[0m16:35:22.545700 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF902B6270>]}
+[0m16:35:22.546906 [info ] [MainThread]: 
+[0m16:35:22.547320 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:35:22.547594 [info ] [MainThread]: 
+[0m16:35:22.548057 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:35:22.552418 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres'
+[0m16:35:22.596673 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m16:35:22.597012 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m16:35:22.597255 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:35:23.547018 [debug] [ThreadPool]: SQL status: SELECT 55 in 0.950 seconds
+[0m16:35:23.548056 [debug] [ThreadPool]: On list_postgres: Close
+[0m16:35:23.549594 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres_analytics'
+[0m16:35:23.553758 [debug] [ThreadPool]: Using postgres connection "list_postgres_analytics"
+[0m16:35:23.554231 [debug] [ThreadPool]: On list_postgres_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "list_postgres_analytics"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'analytics'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'analytics'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'analytics'
+    union all
+    select distinct
+     'postgres' as database,
+     proname as name,
+     ns.nspname as schema,
+     'function' as type
+    from pg_proc
+     join pg_namespace as ns on pronamespace = ns.oid
+    where ns.nspname ilike 'analytics'
+  
+[0m16:35:23.554487 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:35:25.075680 [debug] [ThreadPool]: SQL status: SELECT 1 in 1.521 seconds
+[0m16:35:25.078222 [debug] [ThreadPool]: On list_postgres_analytics: ROLLBACK
+[0m16:35:25.280025 [debug] [ThreadPool]: On list_postgres_analytics: Close
+[0m16:35:25.286561 [debug] [MainThread]: Using postgres connection "master"
+[0m16:35:25.287062 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:35:25.287503 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:35:26.715279 [debug] [MainThread]: SQL status: SELECT 1 in 1.427 seconds
+[0m16:35:26.718344 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF90620120>]}
+[0m16:35:26.720165 [debug] [MainThread]: On master: ROLLBACK
+[0m16:35:26.919619 [debug] [MainThread]: On master: COMMIT
+[0m16:35:26.920786 [debug] [MainThread]: Using postgres connection "master"
+[0m16:35:26.921499 [debug] [MainThread]: On master: COMMIT
+[0m16:35:27.329575 [debug] [MainThread]: SQL status: COMMIT in 0.407 seconds
+[0m16:35:27.330877 [debug] [MainThread]: On master: Close
+[0m16:35:27.346664 [debug] [Thread-1 (]: Began running node model.biomass.fem_mensual_final
+[0m16:35:27.347557 [info ] [Thread-1 (]: 1 of 2 START sql table model analytics.fem_mensual_final ....................... [RUN]
+[0m16:35:27.348666 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.biomass.fem_mensual_final'
+[0m16:35:27.349167 [debug] [Thread-1 (]: Began compiling node model.biomass.fem_mensual_final
+[0m16:35:27.355818 [debug] [Thread-1 (]: Writing injected SQL for node "model.biomass.fem_mensual_final"
+[0m16:35:27.357128 [debug] [Thread-1 (]: Began executing node model.biomass.fem_mensual_final
+[0m16:35:27.384251 [debug] [Thread-1 (]: Writing runtime sql for node "model.biomass.fem_mensual_final"
+[0m16:35:27.385308 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:35:27.385975 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+
+  
+    
+
+  create  table "postgres"."analytics"."fem_mensual_final__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Valor bueno de cada mes del FEM: la version del issue mas reciente.
+-- Asi los meses que se rellenaron en issues posteriores se quedan con su valor final.
+select distinct on (mes)
+    mes,
+    germany_depi_eur_t,
+    austria_propellet_eur_t,
+    swiss_preis_eur_t,
+    baltpool_eur_t,
+    endex_ancla_eur_t,
+    finland_eur_mwh,
+    sweden_eur_mwh,
+    pine_pulpwood_usd,
+    pine_chips_usd,
+    pine_residuals_usd,
+    lithuania_chips_eur_mwh
+from fem_mensual
+order by mes, issue_origen desc
+  );
+  
+[0m16:35:27.386261 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:35:28.966670 [debug] [Thread-1 (]: SQL status: SELECT 14 in 1.580 seconds
+[0m16:35:28.980779 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:35:28.981287 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+alter table "postgres"."analytics"."fem_mensual_final" rename to "fem_mensual_final__dbt_backup"
+[0m16:35:29.171553 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.190 seconds
+[0m16:35:29.174715 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:35:29.175318 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+alter table "postgres"."analytics"."fem_mensual_final__dbt_tmp" rename to "fem_mensual_final"
+[0m16:35:29.376355 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.200 seconds
+[0m16:35:29.389607 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: COMMIT
+[0m16:35:29.389899 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:35:29.390103 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: COMMIT
+[0m16:35:29.498017 [debug] [Thread-1 (]: SQL status: COMMIT in 0.107 seconds
+[0m16:35:29.510351 [debug] [Thread-1 (]: Applying DROP to: "postgres"."analytics"."fem_mensual_final__dbt_backup"
+[0m16:35:29.514731 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:35:29.515030 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+drop table if exists "postgres"."analytics"."fem_mensual_final__dbt_backup" cascade
+[0m16:35:29.645871 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.130 seconds
+[0m16:35:29.652598 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: Close
+[0m16:35:29.658929 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF902E9D90>]}
+[0m16:35:29.660008 [info ] [Thread-1 (]: 1 of 2 OK created sql table model analytics.fem_mensual_final .................. [[32mSELECT 14[0m in 2.31s]
+[0m16:35:29.661254 [debug] [Thread-1 (]: Finished running node model.biomass.fem_mensual_final
+[0m16:35:29.662102 [debug] [Thread-2 (]: Began running node model.biomass.foto_semanal
+[0m16:35:29.662616 [info ] [Thread-2 (]: 2 of 2 START sql table model analytics.foto_semanal ............................ [RUN]
+[0m16:35:29.663428 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.biomass.foto_semanal'
+[0m16:35:29.663791 [debug] [Thread-2 (]: Began compiling node model.biomass.foto_semanal
+[0m16:35:29.665372 [debug] [Thread-2 (]: Writing injected SQL for node "model.biomass.foto_semanal"
+[0m16:35:29.666284 [debug] [Thread-2 (]: Began executing node model.biomass.foto_semanal
+[0m16:35:29.668826 [debug] [Thread-2 (]: Writing runtime sql for node "model.biomass.foto_semanal"
+[0m16:35:29.669839 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:35:29.670142 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+
+  
+    
+
+  create  table "postgres"."analytics"."foto_semanal__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Foto semanal: una fila por miercoles del Argus, con el dato del FEM
+-- del mes correspondiente "arrastrado" a esa semana.
+-- Version inicial reducida: ampliaremos columnas cuando confirmemos el arrastre.
+
+select
+    a.fecha_issue,
+    -- datos semanales del Argus
+    a.cif_nwe_usd_t,
+    a.fob_baltics_eur_t,
+    -- datos mensuales del FEM, arrastrados a esta semana segun su mes
+    f.germany_depi_eur_t,
+    f.endex_ancla_eur_t,
+    f.finland_eur_mwh
+from argus_semanal a
+left join "postgres"."analytics"."fem_mensual_final" f
+    on date_trunc('month', a.fecha_issue) = f.mes
+order by a.fecha_issue
+  );
+  
+[0m16:35:29.670412 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:35:31.022767 [debug] [Thread-2 (]: SQL status: SELECT 12 in 1.352 seconds
+[0m16:35:31.027152 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:35:31.027845 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+alter table "postgres"."analytics"."foto_semanal__dbt_tmp" rename to "foto_semanal"
+[0m16:35:31.220716 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.192 seconds
+[0m16:35:31.224460 [debug] [Thread-2 (]: On model.biomass.foto_semanal: COMMIT
+[0m16:35:31.225249 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:35:31.225857 [debug] [Thread-2 (]: On model.biomass.foto_semanal: COMMIT
+[0m16:35:31.425028 [debug] [Thread-2 (]: SQL status: COMMIT in 0.198 seconds
+[0m16:35:31.428807 [debug] [Thread-2 (]: Applying DROP to: "postgres"."analytics"."foto_semanal__dbt_backup"
+[0m16:35:31.430333 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:35:31.431204 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+drop table if exists "postgres"."analytics"."foto_semanal__dbt_backup" cascade
+[0m16:35:31.629699 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.197 seconds
+[0m16:35:31.633137 [debug] [Thread-2 (]: On model.biomass.foto_semanal: Close
+[0m16:35:31.634624 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ac0c1c43-59d0-44e8-b0df-a9fc21647bdc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF906EA200>]}
+[0m16:35:31.635812 [info ] [Thread-2 (]: 2 of 2 OK created sql table model analytics.foto_semanal ....................... [[32mSELECT 12[0m in 1.97s]
+[0m16:35:31.636749 [debug] [Thread-2 (]: Finished running node model.biomass.foto_semanal
+[0m16:35:31.638759 [debug] [MainThread]: On master: COMMIT
+[0m16:35:31.639122 [debug] [MainThread]: Using postgres connection "master"
+[0m16:35:31.639391 [debug] [MainThread]: On master: COMMIT
+[0m16:35:31.639626 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:35:33.165478 [debug] [MainThread]: SQL status: COMMIT in 1.526 seconds
+[0m16:35:33.166666 [debug] [MainThread]: On master: Close
+[0m16:35:33.168968 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:35:33.169769 [debug] [MainThread]: Connection 'list_postgres' was properly closed.
+[0m16:35:33.170268 [debug] [MainThread]: Connection 'list_postgres_analytics' was properly closed.
+[0m16:35:33.170733 [debug] [MainThread]: Connection 'model.biomass.fem_mensual_final' was properly closed.
+[0m16:35:33.171139 [debug] [MainThread]: Connection 'model.biomass.foto_semanal' was properly closed.
+[0m16:35:33.171716 [info ] [MainThread]: 
+[0m16:35:33.172369 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 10.62 seconds (10.62s).
+[0m16:35:33.173706 [debug] [MainThread]: Command end result
+[0m16:35:33.196582 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\manifest.json
+[0m16:35:33.198931 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\semantic_manifest.json
+[0m16:35:33.201480 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\osi_document.json
+[0m16:35:33.211807 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\run_results.json
+[0m16:35:33.212090 [info ] [MainThread]: 
+[0m16:35:33.212540 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:35:33.212826 [info ] [MainThread]: 
+[0m16:35:33.213080 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
+[0m16:35:33.213713 [debug] [MainThread]: Command `dbt run` succeeded at 16:35:33.213631 after 11.73 seconds
+[0m16:35:33.213961 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF89537CF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF904F2C30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001DF9029F350>]}
+[0m16:35:33.214183 [debug] [MainThread]: Flushing usage events
+[0m16:35:33.884964 [debug] [MainThread]: An error was encountered while trying to flush usage events

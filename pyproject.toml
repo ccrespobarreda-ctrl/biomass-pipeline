@@ -10,6 +10,7 @@ dependencies = [
     "pyyaml>=6.0",       # fichas de extraccion declarativas
     "psycopg[binary]>=3.3.4",
     "python-dotenv>=1.2.2",
+    "dbt-postgres>=1.11.0",
 ]
 
 [project.optional-dependencies]
