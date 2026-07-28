@@ -5,13 +5,14 @@ from datetime import date
 from ..schemas.argus import AsianPellets
 from .base import buscar_num, texto_pdf
 
+CAMBIO = r"(?:[+-][\d.]+|nc)"  # numero con signo o 'nc' (sin cambio)
+
 
 def extraer(ruta_pdf: str, fecha_issue: date) -> AsianPellets:
     t = texto_pdf(ruta_pdf)
-    # el numero va seguido del cambio (+/-), lo que desambigua de las menciones en prosa
     return AsianPellets(
         fecha_issue=fecha_issue,
-        viet_japan_fit_usd_t=buscar_num(r"fob Vietnam to Japan FIT\s+([\d.]+)\s+[+-]", t),
-        viet_korea_usd_t=buscar_num(r"fob Vietnam to S Korea\s+([\d.]+)\s+[+-]", t),
-        gwangyang_usd_t=buscar_num(r"cfr Gwangyang\s+([\d.]+)\s+[+-]", t),
+        viet_japan_fit_usd_t=buscar_num(rf"fob Vietnam to Japan FIT\s+([\d.]+)\s+{CAMBIO}", t),
+        viet_korea_usd_t=buscar_num(rf"fob Vietnam to S Korea\s+([\d.]+)\s+{CAMBIO}", t),
+        gwangyang_usd_t=buscar_num(rf"cfr Gwangyang\s+([\d.]+)\s+{CAMBIO}", t),
     )

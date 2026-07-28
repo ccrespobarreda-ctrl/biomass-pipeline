@@ -8,6 +8,8 @@ dependencies = [
     "pydantic>=2.7",
     "openpyxl>=3.1",     # lectura del sheet historico para validacion
     "pyyaml>=6.0",       # fichas de extraccion declarativas
+    "psycopg[binary]>=3.3.4",
+    "python-dotenv>=1.2.2",
 ]
 
 [project.optional-dependencies]
