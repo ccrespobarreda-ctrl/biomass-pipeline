@@ -1,4 +1,14 @@
--- Foto semanal: una fila por miercoles del Argus, con el dato del FEM del mes
+
+  
+    
+
+  create  table "postgres"."analytics"."foto_semanal__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Foto semanal: una fila por miercoles del Argus, con el dato del FEM del mes
 -- correspondiente "arrastrado". Esta version trae todas las columnas DIRECTAS
 -- (las que se extraen tal cual). Los calculos (€/GJ, €/MWh, $->€) van en la
 -- siguiente tanda, encima de estas.
@@ -49,6 +59,8 @@ select
     f.lithuania_chips_eur_mwh
 
 from argus_semanal a
-left join {{ ref('fem_mensual_final') }} f
+left join "postgres"."analytics"."fem_mensual_final" f
     on date_trunc('month', a.fecha_issue) = f.mes
 order by a.fecha_issue
+  );
+  
