@@ -44,11 +44,17 @@ class AsianPellets(BaseModel):
 
 
 class PalmKernelShells(BaseModel):
-    """Tabla 'Asian palm kernel shells' (variante to Japan FIT). Columnas BO, BQ."""
+    """Tabla 'Asian palm kernel shells'. Dos secciones: 'To Japan FIT' y 'Excl. to Japan FIT'.
+
+    Columnas del sheet: BO (Sumatra FIT), BP (Sumatra sin FIT),
+    BQ (Malaysia FIT), BR (Malaysia sin FIT).
+    """
 
     fecha_issue: date
-    sumatra_fit_usd_t: float | None      # col BO
-    malaysia_fit_usd_t: float | None     # col BQ
+    sumatra_fit_usd_t: float | None      # col BO (To Japan FIT)
+    malaysia_fit_usd_t: float | None     # col BQ (To Japan FIT)
+    sumatra_usd_t: float | None = None   # col BP (Excl. to Japan FIT)
+    malaysia_usd_t: float | None = None  # col BR (Excl. to Japan FIT)
 
 
 class ItalyPremium(BaseModel):
