@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fem_mensual_final
+    description: "Valor bueno de cada mes del FEM (firmes del propio issue; resto ultimo no nulo)."
+    columns:
+      - name: mes
+        description: "Primer dia del mes."
+        tests:
+          - not_null
+          - unique
+      - name: fx_eur_usd
+        description: "Tipo de cambio del mes: euros por 1 US$ (del propio issue del mes)."
+        tests:
+          # rango de cordura: si el regex pescara otra fila, el valor se saldria de aqui
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0.5
+                max_value: 1.5
+          # no debe faltar en los meses de 2025 en adelante (2024 sale NULL a proposito)
+          - not_null:
+              config:
+                where: "mes >= '2025-01-01'"
+      - name: endex_ancla_eur_t
+        description: "ENDEX (Industrial wood pellets CIF ARA) en €/t, del propio issue del mes."
+        tests:
+          - not_null:
+              config:
+                where: "mes >= '2025-01-01'"
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 100
+                max_value: 400
