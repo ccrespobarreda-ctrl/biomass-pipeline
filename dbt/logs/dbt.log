@@ -5224,3 +5224,377 @@ having count(*) > 1
 [0m15:52:53.099478 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001598EAFD850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001598BBDF5F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001598EEBFAC0>]}
 [0m15:52:53.099720 [debug] [MainThread]: Flushing usage events
 [0m15:52:53.245876 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:07:23.471899 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024687D4C830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246855A51D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468A5FF9D0>]}
+
+
+============================== 16:07:23.475258 | b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2 ==============================
+[0m16:07:23.475258 [info ] [MainThread]: Running with dbt=1.12.0
+[0m16:07:23.475774 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\Cristina Crespo\\Desktop\\amor_y_datos\\biomass-pipeline\\biomass-pipeline\\dbt\\logs'}
+[0m16:07:23.708376 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468A586C40>]}
+[0m16:07:23.782265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468A67BCE0>]}
+[0m16:07:23.783268 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m16:07:23.983780 [debug] [MainThread]: checksum: d7cdc59de4fe4bbe673df08e66b19d53ac954f798c807b5aecad886b44de16c1, vars: {}, profile: biomass, target: dev, version: 1.12.0
+[0m16:07:24.125742 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m16:07:24.126182 [debug] [MainThread]: Partial parsing: updated file: biomass://models\foto_semanal.sql
+[0m16:07:24.407298 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468ACCC350>]}
+[0m16:07:24.497574 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\manifest.json
+[0m16:07:24.499831 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\semantic_manifest.json
+[0m16:07:24.515730 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\osi_document.json
+[0m16:07:24.526830 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468B082F30>]}
+[0m16:07:24.527197 [info ] [MainThread]: Found 2 models, 7 data tests, 593 macros
+[0m16:07:24.527595 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468B0AD7F0>]}
+[0m16:07:24.528865 [info ] [MainThread]: 
+[0m16:07:24.529354 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:07:24.529737 [info ] [MainThread]: 
+[0m16:07:24.530412 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:07:24.535432 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres'
+[0m16:07:24.590927 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m16:07:24.591263 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m16:07:24.591476 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:07:26.164515 [debug] [ThreadPool]: SQL status: SELECT 79 in 1.573 seconds
+[0m16:07:26.168452 [debug] [ThreadPool]: On list_postgres: Close
+[0m16:07:26.173855 [debug] [ThreadPool]: Acquiring new postgres connection 'list_postgres_analytics'
+[0m16:07:26.182787 [debug] [ThreadPool]: Using postgres connection "list_postgres_analytics"
+[0m16:07:26.183298 [debug] [ThreadPool]: On list_postgres_analytics: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "list_postgres_analytics"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'analytics'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'analytics'
+    union all
+    select
+      'postgres' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'analytics'
+    union all
+    select distinct
+     'postgres' as database,
+     proname as name,
+     ns.nspname as schema,
+     'function' as type
+    from pg_proc
+     join pg_namespace as ns on pronamespace = ns.oid
+    where ns.nspname ilike 'analytics'
+  
+[0m16:07:26.183721 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:07:27.000764 [debug] [ThreadPool]: SQL status: SELECT 2 in 0.817 seconds
+[0m16:07:27.004678 [debug] [ThreadPool]: On list_postgres_analytics: ROLLBACK
+[0m16:07:27.101493 [debug] [ThreadPool]: On list_postgres_analytics: Close
+[0m16:07:27.113198 [debug] [MainThread]: Using postgres connection "master"
+[0m16:07:27.114119 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:07:27.114739 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:07:27.906966 [debug] [MainThread]: SQL status: SELECT 1 in 0.792 seconds
+[0m16:07:27.909281 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468B00C460>]}
+[0m16:07:27.910104 [debug] [MainThread]: On master: ROLLBACK
+[0m16:07:28.005824 [debug] [MainThread]: On master: COMMIT
+[0m16:07:28.006874 [debug] [MainThread]: Using postgres connection "master"
+[0m16:07:28.007509 [debug] [MainThread]: On master: COMMIT
+[0m16:07:28.212737 [debug] [MainThread]: SQL status: COMMIT in 0.205 seconds
+[0m16:07:28.213631 [debug] [MainThread]: On master: Close
+[0m16:07:28.220656 [debug] [Thread-1 (]: Began running node model.biomass.fem_mensual_final
+[0m16:07:28.221402 [info ] [Thread-1 (]: 1 of 2 START sql table model analytics.fem_mensual_final ....................... [RUN]
+[0m16:07:28.222639 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.biomass.fem_mensual_final'
+[0m16:07:28.223266 [debug] [Thread-1 (]: Began compiling node model.biomass.fem_mensual_final
+[0m16:07:28.228897 [debug] [Thread-1 (]: Writing injected SQL for node "model.biomass.fem_mensual_final"
+[0m16:07:28.230222 [debug] [Thread-1 (]: Began executing node model.biomass.fem_mensual_final
+[0m16:07:28.263763 [debug] [Thread-1 (]: Writing runtime sql for node "model.biomass.fem_mensual_final"
+[0m16:07:28.264711 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:07:28.265068 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+
+  
+    
+
+  create  table "postgres"."analytics"."fem_mensual_final__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Valor bueno de cada mes del FEM.
+--
+-- Datos FIRMES de mercado (fx_eur_usd, endex_ancla_eur_t): se toman del PROPIO issue
+--     de ese mes (aquel cuyo "mes en curso" es ese mes), no del issue mas reciente que
+--     lo mencione. Asi se evita coger versiones revisadas de meses posteriores
+--     (p.ej. FX julio 0.85 no 0.86 ; ENDEX mayo 181.93 no 181.82).
+-- Resto de columnas: el valor del issue mas reciente que las traiga rellenas (no nulas),
+--     resuelto columna a columna (filosofia de rellenar huecos, ya validada vs Excel).
+
+with base as (
+    select
+        mes,
+        (array_agg(germany_depi_eur_t    order by issue_origen::int desc) filter (where germany_depi_eur_t is not null))[1]    as germany_depi_eur_t,
+        (array_agg(austria_propellet_eur_t order by issue_origen::int desc) filter (where austria_propellet_eur_t is not null))[1] as austria_propellet_eur_t,
+        (array_agg(swiss_preis_eur_t     order by issue_origen::int desc) filter (where swiss_preis_eur_t is not null))[1]     as swiss_preis_eur_t,
+        (array_agg(baltpool_eur_t        order by issue_origen::int desc) filter (where baltpool_eur_t is not null))[1]        as baltpool_eur_t,
+        (array_agg(finland_eur_mwh       order by issue_origen::int desc) filter (where finland_eur_mwh is not null))[1]       as finland_eur_mwh,
+        (array_agg(sweden_eur_mwh        order by issue_origen::int desc) filter (where sweden_eur_mwh is not null))[1]        as sweden_eur_mwh,
+        (array_agg(pine_pulpwood_usd     order by issue_origen::int desc) filter (where pine_pulpwood_usd is not null))[1]     as pine_pulpwood_usd,
+        (array_agg(pine_chips_usd        order by issue_origen::int desc) filter (where pine_chips_usd is not null))[1]        as pine_chips_usd,
+        (array_agg(pine_residuals_usd    order by issue_origen::int desc) filter (where pine_residuals_usd is not null))[1]    as pine_residuals_usd,
+        (array_agg(lithuania_chips_eur_mwh order by issue_origen::int desc) filter (where lithuania_chips_eur_mwh is not null))[1] as lithuania_chips_eur_mwh
+    from fem_mensual
+    group by mes
+),
+
+issue_actual as (
+    select issue_origen, max(mes) as mes_actual
+    from fem_mensual
+    group by issue_origen
+),
+
+firmes as (
+    -- datos firmes (FX y ENDEX): del propio issue cuyo mes-en-curso es ese mes
+    select distinct on (f.mes)
+        f.mes,
+        f.fx_eur_usd,
+        f.endex_ancla_eur_t
+    from fem_mensual f
+    join issue_actual ia
+        on ia.issue_origen = f.issue_origen
+       and ia.mes_actual = f.mes
+    order by f.mes, f.issue_origen::int desc
+)
+
+select
+    b.mes,
+    fi.fx_eur_usd,
+    b.germany_depi_eur_t,
+    b.austria_propellet_eur_t,
+    b.swiss_preis_eur_t,
+    b.baltpool_eur_t,
+    fi.endex_ancla_eur_t,
+    b.finland_eur_mwh,
+    b.sweden_eur_mwh,
+    b.pine_pulpwood_usd,
+    b.pine_chips_usd,
+    b.pine_residuals_usd,
+    b.lithuania_chips_eur_mwh
+from base b
+left join firmes fi on fi.mes = b.mes
+order by b.mes
+  );
+  
+[0m16:07:28.265413 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:07:29.647565 [debug] [Thread-1 (]: SQL status: SELECT 14 in 1.382 seconds
+[0m16:07:29.662072 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:07:29.662537 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+alter table "postgres"."analytics"."fem_mensual_final" rename to "fem_mensual_final__dbt_backup"
+[0m16:07:29.782296 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.119 seconds
+[0m16:07:29.786295 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:07:29.787231 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+alter table "postgres"."analytics"."fem_mensual_final__dbt_tmp" rename to "fem_mensual_final"
+[0m16:07:29.956490 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.168 seconds
+[0m16:07:29.982858 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: COMMIT
+[0m16:07:29.983579 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:07:29.984232 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: COMMIT
+[0m16:07:30.159657 [debug] [Thread-1 (]: SQL status: COMMIT in 0.175 seconds
+[0m16:07:30.174482 [debug] [Thread-1 (]: Applying DROP to: "postgres"."analytics"."fem_mensual_final__dbt_backup"
+[0m16:07:30.181436 [debug] [Thread-1 (]: Using postgres connection "model.biomass.fem_mensual_final"
+[0m16:07:30.181930 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.fem_mensual_final"} */
+drop table if exists "postgres"."analytics"."fem_mensual_final__dbt_backup" cascade
+[0m16:07:30.312765 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.130 seconds
+[0m16:07:30.319553 [debug] [Thread-1 (]: On model.biomass.fem_mensual_final: Close
+[0m16:07:30.325339 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468B086E10>]}
+[0m16:07:30.326295 [info ] [Thread-1 (]: 1 of 2 OK created sql table model analytics.fem_mensual_final .................. [[32mSELECT 14[0m in 2.10s]
+[0m16:07:30.327284 [debug] [Thread-1 (]: Finished running node model.biomass.fem_mensual_final
+[0m16:07:30.328175 [debug] [Thread-2 (]: Began running node model.biomass.foto_semanal
+[0m16:07:30.328694 [info ] [Thread-2 (]: 2 of 2 START sql table model analytics.foto_semanal ............................ [RUN]
+[0m16:07:30.329437 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.biomass.foto_semanal'
+[0m16:07:30.329779 [debug] [Thread-2 (]: Began compiling node model.biomass.foto_semanal
+[0m16:07:30.331532 [debug] [Thread-2 (]: Writing injected SQL for node "model.biomass.foto_semanal"
+[0m16:07:30.332308 [debug] [Thread-2 (]: Began executing node model.biomass.foto_semanal
+[0m16:07:30.334043 [debug] [Thread-2 (]: Writing runtime sql for node "model.biomass.foto_semanal"
+[0m16:07:30.334656 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:07:30.334975 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+
+  
+    
+
+  create  table "postgres"."analytics"."foto_semanal__dbt_tmp"
+  
+  
+    as
+  
+  (
+    -- Foto semanal: Argus (semanal) + FEM (mensual arrastrado) + columnas calculadas.
+-- Calculos redondeados a 2 decimales. $<->€ con fx_eur_usd del FEM (euros por dolar):
+--   $ -> €  = usd * fx    ;    € -> $  = eur / fx
+
+select
+    a.fecha_issue,
+    f.mes as fecha_mes_fem,
+
+    -- ===== ARGUS =====
+    a.chips_cif_nwe_eur_gj,
+    a.cif_nwe_usd_t,
+    round(a.cif_nwe_usd_t * f.fx_eur_usd, 2)      as cif_nwe_eur_t,
+    round(a.cif_nwe_usd_t * f.fx_eur_usd / 17, 2) as cif_nwe_eur_gj,
+    a.fob_baltics_eur_t,
+    round(a.fob_baltics_eur_t / 17, 2)            as fob_baltics_eur_gj,
+    a.fob_portugal_eur_t,
+    round(a.fob_portugal_eur_t / 17, 2)           as fob_portugal_eur_gj,
+    a.viet_japan_fit_usd_t,
+    round(a.viet_japan_fit_usd_t * f.fx_eur_usd, 2)             as viet_japan_fit_eur_t,
+    round(a.viet_japan_fit_usd_t * f.fx_eur_usd / 17, 2)       as viet_japan_fit_eur_gj,
+    round(a.viet_japan_fit_usd_t * f.fx_eur_usd / 17 * 3.6, 2) as viet_japan_fit_eur_mwh,
+    a.viet_korea_usd_t,
+    round(a.viet_korea_usd_t * f.fx_eur_usd, 2)             as viet_korea_eur_t,
+    round(a.viet_korea_usd_t * f.fx_eur_usd / 17, 2)       as viet_korea_eur_gj,
+    round(a.viet_korea_usd_t * f.fx_eur_usd / 17 * 3.6, 2) as viet_korea_eur_mwh,
+    a.gwangyang_usd_t,
+    round(a.gwangyang_usd_t * f.fx_eur_usd, 2)             as gwangyang_eur_t,
+    round(a.gwangyang_usd_t * f.fx_eur_usd / 17, 2)       as gwangyang_eur_gj,
+    round(a.gwangyang_usd_t * f.fx_eur_usd / 17 * 3.6, 2) as gwangyang_eur_mwh,
+    a.sumatra_fit_usd_t,
+    a.malaysia_fit_usd_t,
+    a.bulk_mid_eur_t,
+    round(a.bulk_mid_eur_t / 17, 2)               as bulk_mid_eur_gj,
+    round(a.bulk_mid_eur_t / 17 * 3.6, 2)         as bulk_mid_eur_mwh,
+    a.bagged_mid_eur_t,
+    round(a.bagged_mid_eur_t / 17, 2)             as bagged_mid_eur_gj,
+    round(a.bagged_mid_eur_t / 17 * 3.6, 2)       as bagged_mid_eur_mwh,
+    a.aveiro_ara_eur_t,
+    a.aveiro_cph_eur_t,
+    a.aveiro_hull_eur_t,
+    a.riga_ara_eur_t,
+    a.riga_cph_eur_t,
+    a.riga_stockholm_eur_t,
+    a.mobile_ara_25kt_usd_t,
+    a.mobile_ara_45kt_usd_t,
+    a.savannah_ara_25kt_usd_t,
+    a.savannah_ara_45kt_usd_t,
+    a.vancouver_ara_45kt_usd_t,
+
+    -- ===== FEM =====
+    f.germany_depi_eur_t,
+    round(f.germany_depi_eur_t / 17, 2)           as germany_depi_eur_gj,
+    round(f.germany_depi_eur_t / 17 * 3.6, 2)     as germany_depi_eur_mwh,
+    f.austria_propellet_eur_t,
+    round(f.austria_propellet_eur_t / 17, 2)      as austria_propellet_eur_gj,
+    round(f.austria_propellet_eur_t / 17 * 3.6, 2) as austria_propellet_eur_mwh,
+    f.swiss_preis_eur_t,
+    round(f.swiss_preis_eur_t / 17, 2)            as swiss_preis_eur_gj,
+    round(f.swiss_preis_eur_t / 17 * 3.6, 2)      as swiss_preis_eur_mwh,
+    f.baltpool_eur_t,
+    round(f.baltpool_eur_t / 17, 2)               as baltpool_eur_gj,
+    round(f.baltpool_eur_t / 17 * 3.6, 2)         as baltpool_eur_mwh,
+    f.endex_ancla_eur_t,
+    round(f.endex_ancla_eur_t / 17, 2)            as endex_ancla_eur_gj,
+    round(f.endex_ancla_eur_t / 17 * 3.6, 2)      as endex_ancla_eur_mwh,
+    round(f.endex_ancla_eur_t / f.fx_eur_usd, 2)             as endex_ancla_usd_t,
+    round(f.endex_ancla_eur_t / f.fx_eur_usd / 17, 2)       as endex_ancla_usd_gj,
+    round(f.endex_ancla_eur_t / f.fx_eur_usd / 17 * 3.6, 2) as endex_ancla_usd_mwh,
+    f.finland_eur_mwh,
+    round(f.finland_eur_mwh / 3.6, 2)             as finland_eur_gj,
+    f.sweden_eur_mwh,
+    round(f.sweden_eur_mwh / 3.6, 2)              as sweden_eur_gj,
+    f.lithuania_chips_eur_mwh,
+    round(f.lithuania_chips_eur_mwh / 3.6, 2)     as lithuania_chips_eur_gj,
+    f.pine_pulpwood_usd,
+    f.pine_chips_usd,
+    f.pine_residuals_usd
+
+from argus_semanal a
+left join "postgres"."analytics"."fem_mensual_final" f
+    on date_trunc('month', a.fecha_issue) = f.mes
+order by a.fecha_issue
+  );
+  
+[0m16:07:30.335278 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:07:32.105007 [debug] [Thread-2 (]: SQL status: SELECT 12 in 1.769 seconds
+[0m16:07:32.112634 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:07:32.113633 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+alter table "postgres"."analytics"."foto_semanal" rename to "foto_semanal__dbt_backup"
+[0m16:07:32.309378 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.195 seconds
+[0m16:07:32.314755 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:07:32.315672 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+alter table "postgres"."analytics"."foto_semanal__dbt_tmp" rename to "foto_semanal"
+[0m16:07:32.513875 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.197 seconds
+[0m16:07:32.516636 [debug] [Thread-2 (]: On model.biomass.foto_semanal: COMMIT
+[0m16:07:32.517634 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:07:32.518195 [debug] [Thread-2 (]: On model.biomass.foto_semanal: COMMIT
+[0m16:07:32.616351 [debug] [Thread-2 (]: SQL status: COMMIT in 0.097 seconds
+[0m16:07:32.626634 [debug] [Thread-2 (]: Applying DROP to: "postgres"."analytics"."foto_semanal__dbt_backup"
+[0m16:07:32.628030 [debug] [Thread-2 (]: Using postgres connection "model.biomass.foto_semanal"
+[0m16:07:32.628559 [debug] [Thread-2 (]: On model.biomass.foto_semanal: /* {"app": "dbt", "dbt_version": "1.12.0", "profile_name": "biomass", "target_name": "dev", "node_id": "model.biomass.foto_semanal"} */
+drop table if exists "postgres"."analytics"."foto_semanal__dbt_backup" cascade
+[0m16:07:32.821294 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.192 seconds
+[0m16:07:32.823603 [debug] [Thread-2 (]: On model.biomass.foto_semanal: Close
+[0m16:07:32.824910 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b4a3ae33-fda6-4f95-b2a5-797bfdf7ace2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468B2DAC50>]}
+[0m16:07:32.825894 [info ] [Thread-2 (]: 2 of 2 OK created sql table model analytics.foto_semanal ....................... [[32mSELECT 12[0m in 2.50s]
+[0m16:07:32.826979 [debug] [Thread-2 (]: Finished running node model.biomass.foto_semanal
+[0m16:07:32.829218 [debug] [MainThread]: On master: COMMIT
+[0m16:07:32.829750 [debug] [MainThread]: Using postgres connection "master"
+[0m16:07:32.830138 [debug] [MainThread]: On master: COMMIT
+[0m16:07:32.830513 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:07:34.261972 [debug] [MainThread]: SQL status: COMMIT in 1.431 seconds
+[0m16:07:34.262819 [debug] [MainThread]: On master: Close
+[0m16:07:34.264062 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:07:34.264609 [debug] [MainThread]: Connection 'list_postgres' was properly closed.
+[0m16:07:34.265014 [debug] [MainThread]: Connection 'list_postgres_analytics' was properly closed.
+[0m16:07:34.265416 [debug] [MainThread]: Connection 'model.biomass.fem_mensual_final' was properly closed.
+[0m16:07:34.265802 [debug] [MainThread]: Connection 'model.biomass.foto_semanal' was properly closed.
+[0m16:07:34.266302 [info ] [MainThread]: 
+[0m16:07:34.267005 [info ] [MainThread]: Finished running 2 table models in 0 hours 0 minutes and 9.74 seconds (9.74s).
+[0m16:07:34.268103 [debug] [MainThread]: Command end result
+[0m16:07:34.304565 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\manifest.json
+[0m16:07:34.308924 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\semantic_manifest.json
+[0m16:07:34.311173 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\osi_document.json
+[0m16:07:34.318016 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Cristina Crespo\Desktop\amor_y_datos\biomass-pipeline\biomass-pipeline\dbt\target\run_results.json
+[0m16:07:34.318286 [info ] [MainThread]: 
+[0m16:07:34.318653 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:07:34.318973 [info ] [MainThread]: 
+[0m16:07:34.319297 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=2
+[0m16:07:34.319953 [debug] [MainThread]: Command `dbt run` succeeded at 16:07:34.319876 after 11.09 seconds
+[0m16:07:34.320189 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468AE613B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002468B38DAC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000246881F6950>]}
+[0m16:07:34.320419 [debug] [MainThread]: Flushing usage events
+[0m16:07:34.513662 [debug] [MainThread]: An error was encountered while trying to flush usage events

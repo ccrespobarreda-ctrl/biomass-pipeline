@@ -4,6 +4,7 @@
 
 select
     a.fecha_issue,
+    f.mes as fecha_mes_fem,
 
     -- ===== ARGUS =====
     a.chips_cif_nwe_eur_gj,
