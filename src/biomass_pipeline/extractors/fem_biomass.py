@@ -12,6 +12,7 @@ import pdfplumber
 from ..schemas.fem import BiomassPricesFEM
 
 PAGINA_TABLA = 2
+MARCADOR_CAMBIO = "Exchange rates against the US dollar"
 MESES = {
     "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
     "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
@@ -21,6 +22,33 @@ MESES = {
 def _texto_pagina(ruta_pdf: str, pag: int = PAGINA_TABLA) -> str:
     with pdfplumber.open(ruta_pdf) as pdf:
         return pdf.pages[pag].extract_text() or ""
+
+
+def _texto_pagina_por_marcador(ruta_pdf: str, marcador: str) -> str:
+    """La pagina del cambio se MUEVE entre issues (16, 17 o 18): se busca por contenido."""
+    with pdfplumber.open(ruta_pdf) as pdf:
+        for page in pdf.pages:
+            t = page.extract_text() or ""
+            if marcador in t:
+                return t
+    return ""
+
+
+def _fx_por_mes(ruta_pdf: str) -> dict[date, float]:
+    """{primer dia del mes: euros por 1 USD} de la fila 'Euro' de la tabla de cambio.
+
+    La cabecera trae 3 meses (año-atras, mes-previo, mes-en-curso) y la fila Euro
+    sus 3 valores en el mismo orden; se emparejan por posicion.
+    """
+    texto = _texto_pagina_por_marcador(ruta_pdf, MARCADOR_CAMBIO)
+    cab = re.search(
+        r"(?m)^[ \t]*([A-Z][a-z]{2}-\d{2}) +([A-Z][a-z]{2}-\d{2}) +([A-Z][a-z]{2}-\d{2}) +M/M",
+        texto,
+    )
+    fila = re.search(r"(?m)^[ \t]*Euro +(\d+\.\d+) +(\d+\.\d+) +(\d+\.\d+)\b", texto)
+    if not cab or not fila:
+        return {}
+    return {_mes_a_fecha(cab.group(i)): float(fila.group(i)) for i in (1, 2, 3)}
 
 
 def _columnas(texto: str) -> list[str]:
@@ -57,14 +85,17 @@ def extraer_todos(ruta_pdf: str, issue_origen: str) -> list[BiomassPricesFEM]:
     """Una fila por cada columna MENSUAL del issue (las trimestrales se ignoran)."""
     texto = _texto_pagina(ruta_pdf)
     cols = _columnas(texto)
+    fx_map = _fx_por_mes(ruta_pdf)
     filas = []
     for idx, etiqueta in enumerate(cols):
         if not re.match(r"[A-Z][a-z]{2}-\d{2}", etiqueta):
             continue  # saltar columnas trimestrales (4Q23, 1Q25...)
+        f_mes = _mes_a_fecha(etiqueta)
         filas.append(
             BiomassPricesFEM(
-                mes=_mes_a_fecha(etiqueta),
+                mes=f_mes,
                 issue_origen=issue_origen,
+                fx_eur_usd=fx_map.get(f_mes),
                 germany_depi_eur_t=_valor(texto, "Heating wood pellets - Germany", "€/tonne", idx),
                 austria_propellet_eur_t=_valor(
                     texto, "Heating wood pellets - Austria", "€/tonne", idx

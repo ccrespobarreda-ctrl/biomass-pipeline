@@ -14,6 +14,8 @@ class BiomassPricesFEM(BaseModel):
 
     mes: date
     issue_origen: str | None = None
+    # tipo de cambio del mes (euros por 1 US$; la fila 'US dollar' del FEM vale 1.00)
+    fx_eur_usd: float | None = None
     # residenciales (mensuales, fiables)
     germany_depi_eur_t: float | None = None       # col AI
     austria_propellet_eur_t: float | None = None  # col AL
@@ -33,4 +35,11 @@ class BiomassPricesFEM(BaseModel):
     def rango_residencial(cls, v):
         if v is not None and not (150 <= v <= 600):
             raise ValueError(f"precio residencial fuera de rango plausible: {v}")
+        return v
+
+    @field_validator("fx_eur_usd")
+    @classmethod
+    def rango_fx(cls, v):
+        if v is not None and not (0.5 <= v <= 1.5):
+            raise ValueError(f"tipo de cambio fuera de rango plausible: {v}")
         return v
