@@ -17,3 +17,6 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+
+data/procesados.json
+dbt/dbt_packages/
