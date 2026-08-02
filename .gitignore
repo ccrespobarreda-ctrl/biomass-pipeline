@@ -18,5 +18,7 @@ dist/
 build/
 *.egg-info/
 
+credentials.json
+token.json
 data/procesados.json
 dbt/dbt_packages/
