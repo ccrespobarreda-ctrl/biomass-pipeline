@@ -37,12 +37,22 @@ select
     a.bagged_mid_eur_t,
     round(a.bagged_mid_eur_t / 17, 2)             as bagged_mid_eur_gj,
     round(a.bagged_mid_eur_t / 17 * 3.6, 2)       as bagged_mid_eur_mwh,
+
+    -- fletes: Aveiro y Riga vienen en €/t en el PDF; se convierten TAMBIEN a $/t
+    -- para poder compararlos con los transatlanticos (Mobile/Savannah/Vancouver).
     a.aveiro_ara_eur_t,
+    round(a.aveiro_ara_eur_t / f.fx_eur_usd, 2)       as aveiro_ara_usd_t,
     a.aveiro_cph_eur_t,
+    round(a.aveiro_cph_eur_t / f.fx_eur_usd, 2)       as aveiro_cph_usd_t,
     a.aveiro_hull_eur_t,
+    round(a.aveiro_hull_eur_t / f.fx_eur_usd, 2)      as aveiro_hull_usd_t,
     a.riga_ara_eur_t,
+    round(a.riga_ara_eur_t / f.fx_eur_usd, 2)         as riga_ara_usd_t,
     a.riga_cph_eur_t,
+    round(a.riga_cph_eur_t / f.fx_eur_usd, 2)         as riga_cph_usd_t,
     a.riga_stockholm_eur_t,
+    round(a.riga_stockholm_eur_t / f.fx_eur_usd, 2)   as riga_stockholm_usd_t,
+    -- estos ya son $/t nativos en el PDF
     a.mobile_ara_25kt_usd_t,
     a.mobile_ara_45kt_usd_t,
     a.savannah_ara_25kt_usd_t,
