@@ -177,7 +177,14 @@ def procesar_fuente(servicio, fuente: str, anio_pedido: str | None, ya_en_bd) ->
     destino_dir = DESTINOS[fuente]
     destino_dir.mkdir(parents=True, exist_ok=True)
     bajados = errores = 0
-    for anio in _anios(listar(servicio, raiz), anio_pedido):
+    anios = _anios(listar(servicio, raiz), anio_pedido)
+    if not anios:
+        # Sin permiso de lectura Drive no da error: devuelve la carpeta vacia.
+        raise RuntimeError(
+            f"no veo ninguna carpeta de anio en {fuente}: revisa que la cuenta "
+            "tenga permiso de Lector en la carpeta de Drive"
+        )
+    for anio in anios:
         hijos_anio = listar(servicio, anio["id"])
         # PDFs sueltos en la carpeta del anio (FEM siempre; Argus por si alguien los deja ahi)
         lotes = [_pdfs(hijos_anio)]
