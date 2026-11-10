@@ -160,10 +160,10 @@ def extraer_todos(ruta_pdf: str, issue_origen: str) -> list[BiomassPricesFEM]:
             "swiss_preis_eur_t": _valor(
                 texto, "Heating wood pellets - Switzerland", "€/tonne", idx
             ),
-            "baltpool_eur_t": _valor(texto, "Heating wood pellets - Lithuania", "€/tonne", idx),
+            "baltpool_chips_eur_mwh": _valor(texto, "Wood chips - Lith", "€/MWh", idx),
             "endex_ancla_eur_t": _valor(texto, "Industrial wood pellets", "€/tonne", idx),
             "finland_eur_mwh": _valor(texto, "Forest biomass - Finland", "€/MWh", idx),
-            "lithuania_chips_eur_mwh": _valor(texto, "Wood chips - Lith", "€/MWh", idx),
+
         }
         # si el FEM llegase a publicar estas series por meses, se usa el valor mensual
         for campo, (etq, uni) in SERIES_TRIMESTRALES.items():

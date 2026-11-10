@@ -1,6 +1,8 @@
 -- Foto semanal: Argus (semanal) + FEM (mensual arrastrado) + columnas calculadas.
 -- Calculos redondeados a 2 decimales. $<->€ con fx_eur_usd del FEM (euros por dolar):
 --   $ -> €  = usd * fx    ;    € -> $  = eur / fx
+-- Baltpool (Wood chips Lithuania, SM2) se publica en €/MWh: su paso a €/GJ es
+--   dividir entre 3.6, NO entre 17 (que son GJ por tonelada).
 
 select
     a.fecha_issue,
@@ -69,9 +71,6 @@ select
     f.swiss_preis_eur_t,
     round(f.swiss_preis_eur_t / 17, 2)            as swiss_preis_eur_gj,
     round(f.swiss_preis_eur_t / 17 * 3.6, 2)      as swiss_preis_eur_mwh,
-    f.baltpool_eur_t,
-    round(f.baltpool_eur_t / 17, 2)               as baltpool_eur_gj,
-    round(f.baltpool_eur_t / 17 * 3.6, 2)         as baltpool_eur_mwh,
     f.endex_ancla_eur_t,
     round(f.endex_ancla_eur_t / 17, 2)            as endex_ancla_eur_gj,
     round(f.endex_ancla_eur_t / 17 * 3.6, 2)      as endex_ancla_eur_mwh,
@@ -82,8 +81,8 @@ select
     round(f.finland_eur_mwh / 3.6, 2)             as finland_eur_gj,
     f.sweden_eur_mwh,
     round(f.sweden_eur_mwh / 3.6, 2)              as sweden_eur_gj,
-    f.lithuania_chips_eur_mwh,
-    round(f.lithuania_chips_eur_mwh / 3.6, 2)     as lithuania_chips_eur_gj,
+    f.baltpool_chips_eur_mwh,
+    round(f.baltpool_chips_eur_mwh / 3.6, 2)      as baltpool_chips_eur_gj,
     f.pine_pulpwood_usd,
     f.pine_chips_usd,
     f.pine_residuals_usd

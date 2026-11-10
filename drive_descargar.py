@@ -2,25 +2,36 @@
 
 Estructura en Drive:
   FEM   : Forest Energy Monitor / <anio> / *.pdf          (2 niveles)
-  Argus : Argus Biomass Markets / <anio> / <mes> / *.pdf  (3 niveles)
+  Argus : Argus Biomass Markets / <anio> / <mes> / *.pdf  (3 niveles; tambien acepta
+          PDFs sueltos en la carpeta del anio)
 
 Deja los PDFs en data/pdfs/entrada/{FEM,Argus}/ y luego ingesta.py los carga.
 No vuelve a bajar un PDF que ya existe en la carpeta de destino.
 
 Uso:
-    uv run python drive_descargar.py            # todos los anios >= 2025
-    uv run python drive_descargar.py 2026       # solo un anio (util para ir por tandas)
+    uv run python drive_descargar.py                    # todos los anios >= 2025
+    uv run python drive_descargar.py 2026               # solo un anio
+    uv run python drive_descargar.py --saltar-cargados  # no baja lo que ya esta en la BD
+                                                        # (lo usa GitHub Actions, que
+                                                        #  empieza cada dia sin PDFs)
 
-La autenticacion esta aislada en autenticar(): en la Fase 7, para que corra solo en un
-VPS, solo habra que cambiar esa funcion (cuenta de servicio) y nada mas.
+Autenticacion (autenticar()), por orden:
+  1. GOOGLE_SERVICE_ACCOUNT_JSON (variable de entorno con el JSON de la cuenta de servicio)
+  2. GOOGLE_TOKEN_JSON           (variable de entorno con el contenido de token.json)
+  3. token.json / credentials.json locales (abre el navegador la 1a vez)
+
+Sale con codigo 1 si algun PDF o carpeta da error (asi GitHub Actions avisa por correo).
 """
 
 import io
+import json
+import os
 import re
 import sys
 from pathlib import Path
 
 from google.auth.transport.requests import Request
+from google.oauth2 import service_account
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
@@ -43,22 +54,33 @@ FUENTES = {
     "Argus": ("0B2IEeKvuIZtkalZRT0hjdkd1bUE", "0-n5Nk80qLQKw7uncTyZ6JEw", 2),
 }
 
-CLAVES: dict[str, str] = {}   # id -> resourceKey (las carpetas 0B... la necesitan)
+CLAVES: dict[str, str] = {}  # id -> resourceKey (las carpetas 0B... la necesitan)
 
 
 def autenticar():
-    """Devuelve el servicio de Drive. La 1a vez abre el navegador para autorizar."""
-    creds = None
-    if TOKEN.exists():
-        creds = Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
+    """Devuelve el servicio de Drive (ver orden de autenticacion arriba)."""
+    sa_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
+    token_json = os.environ.get("GOOGLE_TOKEN_JSON")
+    if sa_json:
+        creds = service_account.Credentials.from_service_account_info(
+            json.loads(sa_json), scopes=SCOPES
+        )
+    elif token_json:
+        creds = Credentials.from_authorized_user_info(json.loads(token_json), SCOPES)
+        if not creds.valid:
             creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(str(CREDENCIALES), SCOPES)
-            creds = flow.run_local_server(port=0)
-        TOKEN.write_text(creds.to_json(), encoding="utf-8")
-    return build("drive", "v3", credentials=creds)
+    else:
+        creds = None
+        if TOKEN.exists():
+            creds = Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+            else:
+                flow = InstalledAppFlow.from_client_secrets_file(str(CREDENCIALES), SCOPES)
+                creds = flow.run_local_server(port=0)
+            TOKEN.write_text(creds.to_json(), encoding="utf-8")
+    return build("drive", "v3", credentials=creds, cache_discovery=False)
 
 
 def _cabecera() -> str:
@@ -66,19 +88,27 @@ def _cabecera() -> str:
 
 
 def listar(servicio, carpeta_id: str) -> list[dict]:
-    """Lista el contenido de una carpeta y memoriza las resourceKey de los hijos."""
-    req = servicio.files().list(
-        q=f"'{carpeta_id}' in parents and trashed = false",
-        fields="files(id, name, mimeType, resourceKey)",
-        pageSize=500,
-        orderBy="name",
-        supportsAllDrives=True,
-        includeItemsFromAllDrives=True,
-    )
-    cab = _cabecera()
-    if cab:
-        req.headers["X-Goog-Drive-Resource-Keys"] = cab
-    hijos = req.execute().get("files", [])
+    """Lista el contenido de una carpeta (todas las paginas) y memoriza las resourceKey."""
+    hijos: list[dict] = []
+    token = None
+    while True:
+        req = servicio.files().list(
+            q=f"'{carpeta_id}' in parents and trashed = false",
+            fields="nextPageToken, files(id, name, mimeType, resourceKey)",
+            pageSize=500,
+            orderBy="name",
+            pageToken=token,
+            supportsAllDrives=True,
+            includeItemsFromAllDrives=True,
+        )
+        cab = _cabecera()
+        if cab:
+            req.headers["X-Goog-Drive-Resource-Keys"] = cab
+        resp = req.execute()
+        hijos += resp.get("files", [])
+        token = resp.get("nextPageToken")
+        if not token:
+            break
     for h in hijos:
         if h.get("resourceKey"):
             CLAVES[h["id"]] = h["resourceKey"]
@@ -121,42 +151,80 @@ def _pdfs(hijos: list[dict]) -> list[dict]:
     return [h for h in hijos if h["name"].lower().endswith(".pdf")]
 
 
-def procesar_fuente(servicio, fuente: str, anio_pedido: str | None) -> int:
-    """Baja los PDFs nuevos de una fuente. Devuelve cuantos bajo."""
+def _ya_en_bd():
+    """Devuelve una funcion (fuente, nombre) -> True si ese PDF ya esta cargado en la BD."""
+    from biomass_pipeline.carga import conectar
+
+    from ingesta import _fecha_argus, _issue_fem, claves_en_bd
+
+    with conectar() as conn:
+        fechas, issues = claves_en_bd(conn)
+
+    def esta(fuente: str, nombre: str) -> bool:
+        try:
+            if fuente == "Argus":
+                return _fecha_argus(nombre).isoformat() in fechas
+            return _issue_fem(nombre) in issues
+        except ValueError:
+            return False  # nombre raro: se baja y ingesta.py avisara
+
+    return esta
+
+
+def procesar_fuente(servicio, fuente: str, anio_pedido: str | None, ya_en_bd) -> tuple[int, int]:
+    """Baja los PDFs nuevos de una fuente. Devuelve (bajados, errores)."""
     raiz, rkey, niveles = FUENTES[fuente]
     CLAVES[raiz] = rkey
     destino_dir = DESTINOS[fuente]
     destino_dir.mkdir(parents=True, exist_ok=True)
-    bajados = 0
+    bajados = errores = 0
     for anio in _anios(listar(servicio, raiz), anio_pedido):
-        # niveles==1 (FEM): los PDFs estan en el anio. niveles==2 (Argus): en subcarpetas
-        contenedores = [anio]
+        hijos_anio = listar(servicio, anio["id"])
+        # PDFs sueltos en la carpeta del anio (FEM siempre; Argus por si alguien los deja ahi)
+        lotes = [_pdfs(hijos_anio)]
         if niveles == 2:
-            contenedores = [c for c in listar(servicio, anio["id"])
-                            if c["mimeType"] == CARPETA_TIPO]
-        for cont in contenedores:
-            for pdf in _pdfs(listar(servicio, cont["id"])):
+            if lotes[0]:
+                print(
+                    f"  {fuente} {anio['name']}: (aviso) hay PDFs sueltos fuera de las "
+                    "carpetas de mes, los bajo igualmente"
+                )
+            for cont in hijos_anio:
+                if cont["mimeType"] == CARPETA_TIPO:
+                    lotes.append(_pdfs(listar(servicio, cont["id"])))
+        for lote in lotes:
+            for pdf in lote:
                 ruta = destino_dir / pdf["name"]
-                if ruta.exists():
+                if ruta.exists() or (ya_en_bd and ya_en_bd(fuente, pdf["name"])):
                     continue
                 try:
                     descargar(servicio, pdf["id"], ruta)
                     bajados += 1
                     print(f"  {fuente} {anio['name']}: bajado {pdf['name']}")
                 except Exception as e:
+                    errores += 1
                     print(f"  {fuente} {anio['name']}: ERROR con {pdf['name']}: {e}")
-    return bajados
+    return bajados, errores
 
 
 def main() -> None:
-    anio_pedido = sys.argv[1] if len(sys.argv) > 1 else None
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    anio_pedido = args[0] if args else None
     if anio_pedido:
         print(f"(solo anio {anio_pedido})")
+    ya_en_bd = _ya_en_bd() if "--saltar-cargados" in sys.argv else None
     servicio = autenticar()
-    total = 0
+    total = errores = 0
     for fuente in FUENTES:
-        total += procesar_fuente(servicio, fuente, anio_pedido)
-    print(f"Descarga terminada: {total} PDFs nuevos.")
+        try:
+            b, e = procesar_fuente(servicio, fuente, anio_pedido, ya_en_bd)
+            total += b
+            errores += e
+        except Exception as e:  # p. ej. sin permiso en la carpeta: seguimos con la otra fuente
+            errores += 1
+            print(f"  {fuente}: ERROR al listar las carpetas: {e}")
+    print(f"Descarga terminada: {total} PDFs nuevos, {errores} errores.")
+    if errores:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

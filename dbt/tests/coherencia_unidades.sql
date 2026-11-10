@@ -1,6 +1,9 @@
 -- Test singular: en foto_semanal, €/MWh debe ser €/GJ * 3.6 (misma base energetica).
 -- dbt: el test PASA si esta consulta NO devuelve filas (ninguna fila incumple la regla).
 -- Se deja un margen de 0.05 por el redondeo a 2 decimales de cada columna por separado.
+--
+-- Nota: baltpool_chips se publica en €/MWh y su €/GJ se deriva dividiendo entre 3.6
+-- (no entre 17, que son GJ por tonelada). La regla GJ<->MWh se cumple igual.
 
 with comprobaciones as (
     select fecha_issue, 'germany_depi'  as serie, germany_depi_eur_gj  as eur_gj, germany_depi_eur_mwh  as eur_mwh from {{ ref('foto_semanal') }}
@@ -9,13 +12,13 @@ with comprobaciones as (
     union all
     select fecha_issue, 'swiss_preis',   swiss_preis_eur_gj,   swiss_preis_eur_mwh   from {{ ref('foto_semanal') }}
     union all
-    select fecha_issue, 'baltpool',      baltpool_eur_gj,      baltpool_eur_mwh      from {{ ref('foto_semanal') }}
-    union all
     select fecha_issue, 'endex_ancla',   endex_ancla_eur_gj,   endex_ancla_eur_mwh   from {{ ref('foto_semanal') }}
     union all
     select fecha_issue, 'bulk_mid',      bulk_mid_eur_gj,      bulk_mid_eur_mwh      from {{ ref('foto_semanal') }}
     union all
     select fecha_issue, 'bagged_mid',    bagged_mid_eur_gj,    bagged_mid_eur_mwh    from {{ ref('foto_semanal') }}
+    union all
+    select fecha_issue, 'baltpool_chips', baltpool_chips_eur_gj, baltpool_chips_eur_mwh from {{ ref('foto_semanal') }}
 )
 
 select *

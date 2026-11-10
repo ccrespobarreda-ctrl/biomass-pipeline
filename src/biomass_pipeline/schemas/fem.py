@@ -20,7 +20,6 @@ class BiomassPricesFEM(BaseModel):
     germany_depi_eur_t: float | None = None       # col AI
     austria_propellet_eur_t: float | None = None  # col AL
     swiss_preis_eur_t: float | None = None        # col AF
-    baltpool_eur_t: float | None = None           # col AO
     endex_ancla_eur_t: float | None = None        # col W (fila CIF ARA)
     # series trimestrales / best-effort
     finland_eur_mwh: float | None = None          # col H
@@ -28,7 +27,7 @@ class BiomassPricesFEM(BaseModel):
     pine_pulpwood_usd: float | None = None        # col C
     pine_chips_usd: float | None = None           # col D
     pine_residuals_usd: float | None = None       # col E
-    lithuania_chips_eur_mwh: float | None = None  # col J
+    baltpool_chips_eur_mwh: float | None = None   # col J (y AO)
 
     @field_validator("germany_depi_eur_t", "austria_propellet_eur_t", "swiss_preis_eur_t")
     @classmethod

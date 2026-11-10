@@ -1,0 +1,52 @@
+# Actualiza cada dia Supabase con los PDFs nuevos de Argus y FEM que haya en Drive.
+# Es lo mismo que actualizar.bat, pero en GitHub (sin depender de ningun ordenador).
+#
+# Secretos necesarios (Settings > Secrets and variables > Actions):
+#   DATABASE_URL                 cadena de conexion de Supabase (Session pooler, puerto 5432)
+#   GOOGLE_SERVICE_ACCOUNT_JSON  JSON de la cuenta de servicio  (o, en su lugar, GOOGLE_TOKEN_JSON)
+#   DBT_PROFILES_YML             (opcional) contenido de ~/.dbt/profiles.yml; si no esta, se salta dbt
+#
+# Si falla, GitHub manda un correo a quien activo el workflow.
+
+name: Actualizar datos Argus + FEM
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # todos los dias a las 06:17 UTC (07:17 en invierno / 08:17 en verano)
+  workflow_dispatch:        # boton "Run workflow" para lanzarlo a mano
+
+concurrency:
+  group: actualizar-datos
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      GOOGLE_TOKEN_JSON: ${{ secrets.GOOGLE_TOKEN_JSON }}
+      DBT_PROFILES_YML: ${{ secrets.DBT_PROFILES_YML }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Instalar dependencias
+        run: uv sync
+
+      - name: Bajar de Drive los PDFs que aun no estan en Supabase
+        run: uv run python drive_descargar.py --saltar-cargados
+
+      - name: Cargar en Supabase
+        run: uv run python ingesta.py
+
+      - name: dbt run
+        if: ${{ env.DBT_PROFILES_YML != '' }}
+        run: |
+          mkdir -p ~/.dbt
+          printf '%s' "$DBT_PROFILES_YML" > ~/.dbt/profiles.yml
+          cd dbt
+          if [ -f packages.yml ]; then uv run dbt deps; fi
+          uv run dbt run

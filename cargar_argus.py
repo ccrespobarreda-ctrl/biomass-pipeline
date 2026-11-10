@@ -3,7 +3,8 @@
 Uso:
     uv run python cargar_argus.py "C:\\ruta\\a\\tus\\pdfs"
 
-Los PDFs del Argus deben llamarse con la fecha en el nombre, p.ej. 20250507abm.pdf
+Los PDFs del Argus deben llevar la fecha AAAAMMDD en el nombre, p.ej. 20250507abm.pdf
+o 'Argus Biomass Markets 20260902_338289463.pdf'.
 """
 
 import re
@@ -24,11 +25,12 @@ EXTRACTORES = (argus_spot, argus_asian, argus_pks, argus_italy, argus_freight)
 
 
 def fecha_de_nombre(nombre: str) -> date:
-    m = re.search(r"(\d{4})(\d{2})(\d{2})", nombre)
-    if not m:
-        raise ValueError(f"no encuentro una fecha en el nombre del archivo: {nombre}")
-    anio, mes, dia = map(int, m.groups())
-    return date(anio, mes, dia)
+    for m in re.finditer(r"(20\d{2})(\d{2})(\d{2})", nombre):
+        try:
+            return date(*map(int, m.groups()))
+        except ValueError:
+            continue
+    raise ValueError(f"no encuentro una fecha en el nombre del archivo: {nombre}")
 
 
 def fila_argus(ruta_pdf: str, fecha: date) -> dict:
@@ -42,9 +44,9 @@ def fila_argus(ruta_pdf: str, fecha: date) -> dict:
 
 
 def main(carpeta: str) -> None:
-    pdfs = sorted(Path(carpeta).glob("*abm*.pdf"))
+    pdfs = sorted(Path(carpeta).glob("*.pdf"))
     if not pdfs:
-        print(f"No encontre PDFs del Argus (*abm*.pdf) en: {carpeta}")
+        print(f"No encontre PDFs del Argus en: {carpeta}")
         return
     ok = 0
     with conectar() as conn:

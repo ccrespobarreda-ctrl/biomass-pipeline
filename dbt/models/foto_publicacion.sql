@@ -10,6 +10,10 @@
 -- FLETES: Aveiro y Riga vienen en €/t en el PDF de Argus y se publican convertidos a
 -- $/t (columnas aveiro_*_usd_t, riga_*_usd_t de foto_semanal), para que los 11 fletes
 -- sean comparables en la misma moneda. Mobile/Savannah/Vancouver ya son $/t nativos.
+--
+-- BATPOOL PELLETS UAB: se alimentaba de la fila 'Heating wood pellets - Lithuania
+-- (commercial heat)' en €/t, que ya no se extrae. Se publican como null para no
+-- perder las cabeceras del sheet (ver "Incidencias conocidas" en el README).
 
 select
     fecha_mes_fem                    as "Date 1",
@@ -21,8 +25,8 @@ select
     sweden_eur_gj                    as "Energy wood/biomass - Sweden DAT (€/GJ)",
     finland_eur_mwh                  as "Forest biomass - Finland DAT (€/MWh)",
     finland_eur_gj                   as "Forest biomass - Finland DAT (€/GJ)",
-    lithuania_chips_eur_mwh          as "Wood chips - Lithunania SM2 (€/MWh)",
-    lithuania_chips_eur_gj           as "Wood chips - FOB Lithunania SM2 (€/GJ)",
+    baltpool_chips_eur_mwh           as "Wood chips - Lithunania SM2 (€/MWh)",
+    baltpool_chips_eur_gj            as "Wood chips - FOB Lithunania SM2 (€/GJ)",
     chips_cif_nwe_eur_gj             as "Argus Biomass chips CIF NWE (€/GJ)",
     cif_nwe_usd_t                    as "Industrial Wood Pellet CIF NWE ($/t)",
     cif_nwe_eur_t                    as "Industrial Wood Pellet CIF NWE (€/t)",
@@ -52,9 +56,9 @@ select
     austria_propellet_eur_t          as "Residential Austria ProPellet (€/t)",
     austria_propellet_eur_gj         as "Residential Austria ProPellet (€/GJ)",
     austria_propellet_eur_mwh        as "Residential Austria ProPellet (€/tMWh)",
-    baltpool_eur_t                   as "Lithuania Batpool pellets UAB (€/t)",
-    baltpool_eur_gj                  as "Lithuania Batpool pellets UAB (€/GJ)",
-    baltpool_eur_mwh                 as "Lithuania Batpool pellets UAB (€/MWh)",
+    null::numeric                    as "Lithuania Batpool pellets UAB (€/t)",
+    null::numeric                    as "Lithuania Batpool pellets UAB (€/GJ)",
+    null::numeric                    as "Lithuania Batpool pellets UAB (€/MWh)",
     viet_japan_fit_usd_t             as "Industrial wood pellet FOB Vietnam to Japan - FIT ($/t)",
     viet_japan_fit_eur_t             as "Industrial wood pellet FOB Vietnam to Japan - FIT (€/t)",
     viet_japan_fit_eur_gj            as "Industrial wood pellet FOB Vietnam to Japan - FIT (€/GJ)",

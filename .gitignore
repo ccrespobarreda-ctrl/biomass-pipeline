@@ -22,3 +22,8 @@ credentials.json
 token.json
 data/procesados.json
 dbt/dbt_packages/
+
+actualizar.bat
+dbt/target/
+dbt/logs/
+*.bak
