@@ -154,7 +154,6 @@ def _pdfs(hijos: list[dict]) -> list[dict]:
 def _ya_en_bd():
     """Devuelve una funcion (fuente, nombre) -> True si ese PDF ya esta cargado en la BD."""
     from biomass_pipeline.carga import conectar
-
     from ingesta import _fecha_argus, _issue_fem, claves_en_bd
 
     with conectar() as conn:
