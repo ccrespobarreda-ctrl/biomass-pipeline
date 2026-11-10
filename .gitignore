@@ -27,3 +27,6 @@ actualizar.bat
 dbt/target/
 dbt/logs/
 *.bak
+
+prueba.py
+verificar.py
