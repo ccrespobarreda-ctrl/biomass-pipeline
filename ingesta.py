@@ -31,6 +31,7 @@ from biomass_pipeline.extractors import (
     argus_pks,
     argus_spot,
     fem_biomass,
+    fem_calefaccion,
 )
 
 # --- rutas (relativas a la carpeta del proyecto) ---
@@ -118,6 +119,17 @@ def _cargar_fem(conn, pdf: Path) -> None:
         datos = fila.model_dump()
         datos["mes"] = datos["mes"].isoformat()
         upsert(conn, "fem_mensual", ["mes", "issue_origen"], datos)
+    cargar_calefaccion(conn, pdf, issue)
+
+
+def cargar_calefaccion(conn, pdf: Path, issue: str) -> int:
+    """Gasoleo de calefaccion y diferencial con el pellet (P18). Devuelve filas cargadas."""
+    filas = fem_calefaccion.extraer_todos(str(pdf), issue)
+    for fila in filas:
+        datos = fila.model_dump()
+        datos["mes"] = datos["mes"].isoformat()
+        upsert(conn, "fem_calefaccion", ["mes", "pais", "issue_origen"], datos)
+    return len(filas)
 
 
 # ---------- motor de ingesta ----------
