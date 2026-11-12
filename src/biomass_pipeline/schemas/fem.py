@@ -42,3 +42,31 @@ class BiomassPricesFEM(BaseModel):
         if v is not None and not (0.5 <= v <= 1.5):
             raise ValueError(f"tipo de cambio fuera de rango plausible: {v}")
         return v
+
+class CalefaccionFEM(BaseModel):
+    """Fila de 'European Pellet Heating Economics': UN pais, UN mes, UN issue (P18)."""
+
+    mes: date
+    pais: str
+    issue_origen: str | None = None
+    gasoleo_eur_l: float | None = None    # Heating oil prices, EUR/litre
+    diferencial_pct: float | None = None  # Heating oil versus pellet price differential, %
+    # M/M e Y/Y tal cual los publica el FEM (solo en la fila del mes actual del issue)
+    gasoleo_mm: float | None = None
+    gasoleo_yy: float | None = None
+    diferencial_mm: float | None = None
+    diferencial_yy: float | None = None
+
+    @field_validator("gasoleo_eur_l")
+    @classmethod
+    def rango_gasoleo(cls, v):
+        if v is not None and not (0.3 <= v <= 4):
+            raise ValueError(f"precio del gasoleo fuera de rango plausible: {v}")
+        return v
+
+    @field_validator("diferencial_pct")
+    @classmethod
+    def rango_diferencial(cls, v):
+        if v is not None and not (-100 <= v <= 100):
+            raise ValueError(f"diferencial fuera de rango plausible: {v}")
+        return v
